@@ -3,7 +3,7 @@ import axios from "axios";
 // Konfigurasi dasar untuk instance Axios
 // Anda bisa menambahkan base URL, header, dll. di sini
 const axiosInstance = axios.create({
-  baseURL: "https://codetester-be.vercel.app/api/", // Ganti dengan URL API Anda
+  baseURL: "https://codetester-be.vercel.app/api", // Ganti dengan URL API Anda
   timeout: 10000, // Waktu tunggu permintaan (ms)
   headers: {
     "Content-Type": "application/json",
