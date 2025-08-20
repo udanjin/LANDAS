@@ -8,7 +8,7 @@ const app = express();
 
 // middlewares
 const corsOptions = {
-  origin: "https://codetester.vercel.app/", // URL frontend Anda
+  origin: "https://codetester.vercel.app/", 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204
