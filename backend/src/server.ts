@@ -7,7 +7,14 @@ import authRoutes from "./routes/auth";
 const app = express();
 
 // middlewares
-app.use(cors());
+const corsOptions = {
+  origin: "https://codetester.vercel.app", // URL frontend Anda
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 
