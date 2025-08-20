@@ -69,6 +69,8 @@ You will need to run two terminals simultaneously.
 ## 2. Project Structure Explanation
 
 This project adopts a **Monorepo** architecture combined with **Feature-Based Architecture (FBA)** and **Atomic Design** to ensure scalability and maintainability.
+
+
 /
 ├── backend/        # Folder for all server-side code (Node.js/Express)
 │   ├── src/
