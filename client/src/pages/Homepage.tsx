@@ -15,6 +15,7 @@ const HomePage: React.FC = () => {
         <Carousel />
         <ProductCarousel />
         <ProductGrid />
+        <ProductGrid />
         <B2BSection /> {/* Tambahkan seksi baru */}
       </main>
       <Footer /> {/* Tambahkan footer */}
