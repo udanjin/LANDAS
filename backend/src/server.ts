@@ -8,13 +8,13 @@ const app = express();
 
 // middlewares
 const corsOptions = {
-  origin: "https://codetester.vercel.app/", 
+  origin: "https://codetester.vercel.app", 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204
 };
 
-
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions)); 
 app.use(express.json());
 
