@@ -36,8 +36,8 @@ This project uses a monorepo structure. All commands should be run from the proj
     Create a `.env` file inside the `backend` folder and fill it with the following variables:
     ```env
     PORT=4000
-    MONGO_URI="<YOUR_MONGODB_ATLAS_CONNECTION_STRING>"
-    JWT_SECRET="<YOUR_STRONG_JWT_SECRET_KEY>"
+    MONGO_URI=mongodb+srv://dummy1:yBRXF83O51BWlGmf@cluster0.oirsx8h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    JWT_SECRET=cde49b973932d1206b7f3b03a9b8d9c69602f62397f8a4c7e8fad2dd1d891ca7
     ```
 
 2.  **Frontend (`/client`)**
@@ -69,3 +69,62 @@ You will need to run two terminals simultaneously.
 ## 2. Project Structure Explanation
 
 This project adopts a **Monorepo** architecture combined with **Feature-Based Architecture (FBA)** and **Atomic Design** to ensure scalability and maintainability.
+/
+├── backend/        # Folder for all server-side code (Node.js/Express)
+│   ├── src/
+│   │   ├── controller/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── server.ts   # Server entry point
+│   └── package.json
+│
+└── client/         # Folder for all client-side code (React)
+├── src/
+│   ├── assets/     # Static assets like images, fonts
+│   ├── features/   # Main directory for FBA
+│   │   ├── auth/
+│   │   │   ├── components/ # React components (Atomic Design)
+│   │   │   ├── hooks/      # Custom hooks specific to the feature
+│   │   │   ├── services/   # API calls specific to the feature
+│   │   │   ├── stores/     # State management (Zustand) specific to the feature
+│   │   │   ├── types/      # TypeScript types for the feature
+│   │   │   └── utils/      # Utility functions for the feature
+│   ├── pages/      # Components representing full pages
+│   ├── routes/     # Routing configuration (React Router)
+│   └── shared/     # Reusable code across all features
+│       ├── lib/      # External library configurations (e.g., axiosInstance)
+│       └── ...
+└── package.json
+
+
+-   **Feature-Based Architecture (FBA)**: Each major functionality (like `auth`) is isolated into its own folder within `features`. This makes each feature modular and self-contained, with its own components, hooks, services, and state management.
+-   **Atomic Design**: Within each feature's `components` folder, components are conceptually broken down into:
+    -   **Atoms**: The smallest building blocks (e.g., `Button`, `Input`).
+    -   **Molecules**: Combinations of atoms to form more complex units (e.g., an `InputField`).
+    -   **Organisms**: Larger, self-contained UI sections (e.g., `LoginForm`, `Navbar`).
+-   **Shared**: This folder contains truly generic elements that can be used by any feature, such as a global Axios configuration or common utility functions.
+
+---
+
+## 3. Implementation Assumptions and Decisions
+
+-   **Monorepo Architecture**: Chosen to simplify dependency management and facilitate code sharing (e.g., data types) between the frontend and backend in the future.
+-   **TypeScript**: Used across the entire project (frontend and backend) to ensure type safety, reduce runtime bugs, and improve the developer experience.
+-   **Separate Deployments**: Although in a single repository, the frontend and backend are deployed as two separate projects on Vercel. This simplifies the deployment process and scaling for each part independently.
+-   **Frontend Validation**: Input validation (like minimum password length) is performed on the client-side to provide instant feedback to the user, and will be re-validated on the server-side for security.
+-   **State Management**: For now, local state management (using `useState`) is sufficient. As the application grows, a library like Zustand will be implemented as needed.
+
+---
+
+## 4. Justification for Optional Libraries Used
+
+### Axios
+
+`axios` was chosen as the primary HTTP client for the frontend application for the following reasons:
+
+1.  **Centralized Instance**: `axios` allows for the creation of a centralized instance (`axiosInstance.ts`). This is extremely useful for setting up base configurations (like `baseURL` and `headers`) in one place, avoiding repetition in every API request.
+2.  **Interceptors**: The interceptors feature makes it easy to handle global tasks such as adding an authentication token (JWT) to every request or handling API errors consistently across the application.
+3.  **Broad Browser Support**: `axios` has excellent compatibility with a wide range of browsers, including older ones.
+4.  **Industry Standard**: `axios` is a very popular library and a de-facto standard in the React ecosystem, with extensive documentation and strong community support.
+
