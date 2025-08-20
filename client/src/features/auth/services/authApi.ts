@@ -22,7 +22,7 @@ export const authApi = {
     try {
       const response = await axiosInstance.post<LoginResponse>('/auth/login', credentials);
       return response.data;
-      console.log(response.data);
+      
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Login failed');
     }
