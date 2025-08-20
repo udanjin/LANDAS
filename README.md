@@ -71,35 +71,6 @@ You will need to run two terminals simultaneously.
 This project adopts a **Monorepo** architecture combined with **Feature-Based Architecture (FBA)** and **Atomic Design** to ensure scalability and maintainability.
 
 
-/
-├── backend/        # Folder for all server-side code (Node.js/Express)
-│   ├── src/
-│   │   ├── controller/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── server.ts   # Server entry point
-│   └── package.json
-│
-└── client/         # Folder for all client-side code (React)
-├── src/
-│   ├── assets/     # Static assets like images, fonts
-│   ├── features/   # Main directory for FBA
-│   │   ├── auth/
-│   │   │   ├── components/ # React components (Atomic Design)
-│   │   │   ├── hooks/      # Custom hooks specific to the feature
-│   │   │   ├── services/   # API calls specific to the feature
-│   │   │   ├── stores/     # State management (Zustand) specific to the feature
-│   │   │   ├── types/      # TypeScript types for the feature
-│   │   │   └── utils/      # Utility functions for the feature
-│   ├── pages/      # Components representing full pages
-│   ├── routes/     # Routing configuration (React Router)
-│   └── shared/     # Reusable code across all features
-│       ├── lib/      # External library configurations (e.g., axiosInstance)
-│       └── ...
-└── package.json
-
-
 -   **Feature-Based Architecture (FBA)**: Each major functionality (like `auth`) is isolated into its own folder within `features`. This makes each feature modular and self-contained, with its own components, hooks, services, and state management.
 -   **Atomic Design**: Within each feature's `components` folder, components are conceptually broken down into:
     -   **Atoms**: The smallest building blocks (e.g., `Button`, `Input`).
