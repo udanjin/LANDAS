@@ -63,7 +63,8 @@ You will need to run two terminals simultaneously.
     npm run dev
     ```
     The React application will be running at `http://localhost:5173`.
-
+    ID: dummy
+    password: 12345678
 ---
 
 ## 2. Project Structure Explanation
